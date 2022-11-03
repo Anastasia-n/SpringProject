@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Статистика модуля</title>
+</head>
+<body style="background-color: #E6E6FA ; margin-left: 90px; margin-top: 45px; font-size: large">
+<h1> Статистика модуля </h1>
+<a th:text = "${'Модуль изучался ' + number + ' раз(а)'}"></a>
+<br/>
+<br/>
+<a th:text = "${'Последнее изучение: ' + lastLearning}"></a>
+<br/>
+<br/>
+<a th:text = "${'Средний результат: ' + result + ' %'}"></a>
+<br/>
+<br/>
+<form action="/learning/statistics/delete" method="get">
+    <button type="submit" style="font-size: medium">Сбросить статистику</button>
+</form>
+<br/>
+<form>
+    <button type="button" onclick="javascript:history.back()" style="font-size: medium">Вернуться</button>
+</form>
+</body>
+</html>

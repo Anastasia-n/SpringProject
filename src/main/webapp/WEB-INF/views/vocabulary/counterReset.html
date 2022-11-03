@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Сброс интервального повторения</title>
+</head>
+<body style="background-color: #E6E6FA ; margin-left: 90px; margin-top: 45px; font-size: large">
+<h2 style="margin-bottom: unset"> Вы уверены, что хотите начать изучение модуля заново?</h2>
+<h2 style="margin-top: unset; margin-bottom: unset">(Статистика будет сброшена)</h2>
+<form style="display: inline-block" th:method="get" th:action="@{/learning/resetting}">
+    <input type="submit" value="Да" style="font-size: medium; width: 50px"/>
+</form>
+<form style="display: inline-block;">
+<br/>
+<button type="button" onclick="javascript:history.back()" style="font-size: medium; width: 50px">Нет</button>
+</form>
+</body>
+</html>

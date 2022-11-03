@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Редактировать слово</title>
+</head>
+<body style="background-color: #E6E6FA ; margin-left: 90px; margin-top: 45px; font-size: large">
+<h1>Редактировать слово</h1>
+<br/>
+<form th:method="POST" th:action="@{/vocabulary/{id}/edit (id=${wordToEdit.id})}" th:object="${wordToEdit}">
+    <label for="word">Слово: </label>
+    <input type="text" th:field="*{word}" id="word" placeholder="${wordToEdit.word}" required maxlength="255"/>
+    <br/>
+    <br/>
+    <label for="translation">Перевод: </label>
+    <input type="text" th:field="*{translation}" id="translation" required maxlength="255"/>
+    <br/>
+    <br/>
+    <label for="context">Пример употребления: </label>
+    <input type="text" th:field="*{context}" id="context" required maxlength="255"/>
+    <br/>
+    <br/>
+    <input type="submit" value="Сохранить" style="font-size: medium"/>
+</form>
+</form>
+<br/>
+<button type="button" onclick="javascript:history.back()" style="font-size: medium">Вернуться</button>
+</form>
+</body>
+</html>

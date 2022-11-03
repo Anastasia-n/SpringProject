@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
+    <title>Главная страница</title>
+</head>
+<body style="background-color: #E6E6FA ; margin-left: 90px; margin-top: 45px; font-size: large">
+<h1 th:text="${'Просмотр модуля ' + showFolder.nameFolder}">VALUE</h1>
+<a th:text = "${'Оставшееся время до повторения: ' + timeLeft}" style="font-style: italic"></a>
+<br/>
+<br/>
+<table style="border: 3px solid #dddddd; margin-bottom: 20px; border-radius: 7px;">
+    <tr style="font-weight: normal; background: #B0C4DE; border: 2px solid;">
+        <td style="padding-left: 10px; padding-right: 10px">Слово</td>
+        <td style="padding-left: 10px; padding-right: 10px">Перевод</td>
+        <td style="padding-left: 10px; padding-right: 10px">Пример употребления</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr th:each="word : ${words}">
+        <td style="border: 2px solid #B0C4DE ; padding: 3px;" th:text="${word.word}"></td>
+        <td style="border: 2px solid #B0C4DE; padding: 3px;" th:text="${word.translation}"></td>
+        <td style="border: 2px solid #B0C4DE; padding: 3px;" th:text="${word.context}"></td>
+        <td style="border: 2px solid #B0C4DE; padding: 3px;"><a th:href="@{/vocabulary/{id}/edit (id=${word.id})}">Редактировать</a></td>
+        <td style="border: 2px solid #B0C4DE; padding: 3px;"><a th:href="@{/vocabulary/{id}/delete (id=${word.id})}">Удалить</a></td>
+    </tr>
+</table>
+<br/>
+<a th:href="@{/learning/reset}">Сброс интервального повторения</a>
+<br/>
+<br/>
+<a th:href="@{/vocabulary/{id}/new (id=${showFolder.id})}">Создать новое слово</a>
+<br/>
+<br/>
+<span th:unless="${words.isEmpty}">
+        <a th:href="@{/learning}">Изучать модуль</a>
+    </span>
+<br/>
+<br/>
+<a th:href="@{/learning/statistics}">Просмотр статистики модуля</a>
+<br/>
+<br/>
+<form action="/home" method="get">
+    <button type="submit" style="font-size: medium">Вернуться в главное меню</button>
+</form>
+</body>
+</html>

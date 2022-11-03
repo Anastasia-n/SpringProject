@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
+    <title>Главная страница</title>
+    <link media="all" rel="stylesheet" th:href="@{/css/main.css}" type="text/css"/>
+</head>
+<body style="background-color: #E6E6FA ; margin-left: 90px; margin-top: 45px; font-size: large">
+<h1 th:text="${'Добро пожаловать, ' + user.name + '!'}">VALUE</h1>
+<a th:text = "${message}"></a>
+<table style="border: 3px solid #B0C4DE; margin-bottom: 20px; border-radius: 7px;">
+    <tr style="font-weight: normal; background: #B0C4DE; border: 2px solid;">
+        <td style="padding-left: 10px; padding-right: 10px">Имя набора</td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr th:each="folder : ${folders}">
+        <td style="border: 2px solid #B0C4DE ; padding: 3px;" th:text="${folder.nameFolder}"></td>
+        <td style="border: 2px solid #B0C4DE ; padding: 3px;"><a th:href="@{/folder/{id}/vocabulary (id=${folder.id})}">Просмотр</a></td>
+        <td style="border: 2px solid #B0C4DE ; padding: 3px;"><a th:href="@{/folder/{id}/edit (id=${folder.id})}">Изменить название</a></td>
+        <td style="border: 2px solid #B0C4DE ; padding: 3px;"><a th:href="@{/folder/{id}/delete (id=${folder.id})}">Удалить</a></td>
+    </tr>
+</table>
+<br/>
+<a th:href="@{/home/{id}/folder/new (id=${user.id})}">Создать новый набор</a>
+<br/>
+<br/>
+<a th:href="@{/home/{id}/edit (id=${user.id})}">Изменить имя пользователя</a>
+<br/>
+<br/>
+<form action="/auth/logout" method="post">
+    <button type="submit" style="font-size: medium">Выход</button>
+</form>
+</body>
+</html>

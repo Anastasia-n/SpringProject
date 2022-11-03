@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавить новое слово</title>
+</head>
+<body style="background-color: #E6E6FA ; margin-left: 90px; margin-top: 45px; font-size: large">
+<h1>Добавить новое слово</h1>
+<br/>
+<form th:method="POST" th:action="@{/vocabulary/new}" th:object="${newWord}">
+    <label for="word">Введите слово: </label>
+    <input type="text" th:field="*{word}" id="word" style="width: 250px" required maxlength="255"/>
+    <br/>
+    <br/>
+    <label for="translation">Введите перевод: </label>
+    <input type="text" th:field="*{translation}" id="translation" style="width: 250px" required maxlength="255"/>
+    <br/>
+    <br/>
+    <label for="context">Введите пример употребления: </label>
+    <input type="text" th:field="*{context}" id="context" style="width: 250px" required maxlength="255"/>
+    <br/>
+    <br/>
+    <input type="submit" value="Сохранить" style="font-size: medium"/>
+</form>
+<br/>
+<button type="button" onclick="javascript:history.back()" style="font-size: medium">Вернуться</button>
+</form>
+</body>
+</html>

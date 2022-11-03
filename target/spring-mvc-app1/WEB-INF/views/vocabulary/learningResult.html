@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
+    <title>Результат изучения</title>
+</head>
+<body style="background-color: #E6E6FA ; margin-left: 90px; margin-top: 45px; font-size: large">
+<h1>Результат изучения</h1>
+<br/>
+<p th:text="${'Правильных ответов: ' + correct}">VALUE</p>
+<p th:text="${'Неправильных ответов: ' + mistakes}">VALUE</p>
+<p th:text="${'Всего вопросов: ' + numberOfPages}">VALUE</p>
+<p>Сохранить статистику?</p>
+<form action="/learning/save" method="get" style="display: inline-block;">
+    <button type="submit" style="font-size: medium; width: 50px"> Да </button>
+</form>
+<form action="/learning/delete" method="get" style="display: inline-block;">
+    <button type="submit" style="font-size: medium; width: 50px"> Нет </button>
+</form>
+</body>
+</html>

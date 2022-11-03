@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
+    <title>Изучение модуля</title>
+</head>
+<body style="background-color: #E6E6FA ; margin-left: 90px; margin-top: 45px; font-size: large">
+<h1>Изучение модуля</h1>
+<form method="post" action="/learning/check">
+<table>
+    <tr>
+        <td> </td>
+    </tr>
+    <tr th:each="word : ${page.content}">
+        <td th:text="${word.translation}" style="font-size: larger"></td>
+        <span th:if="${currentPage > page.number}" th:text="${'Правильный ответ: '+ word.word}" style="color: darkgreen"/>
+        <br/>
+        <br/>
+        <span th:if="${currentPage > page.number}" th:text="${'Пример употребления: ' + word.context}" style="color: darkgreen"/>
+        <br/>
+        <br/>
+        <td></td>
+        <input type="hidden" th:value="${word.word}" th:attr="name='wordToCompare'">
+        <input type="hidden" th:value="${page.number}" th:attr="name='pageNumber'">
+    </tr>
+</table>
+    <br/>
+<label for="check">Введите слово</label>
+<input name="wordToCheck" type="text" id="check">
+<br/>
+<br/>
+    <span th:if="${currentPage <= page.number}">
+<input type="submit" value="Проверить" style="font-size: medium">
+        </span>
+</form>
+<p th:text="${'Количество правильных ответов: ' + counter}">VALUE</p>
+<div class="pagination-div">
+    <span th:if="${page.hasPrevious()}">
+        <a th:href="@{/learning(page=${page.number-1},size=${page.size})}">Назад</a>
+    </span>
+    <span th:if="${page.hasNext()} and ${currentPage > page.number}">
+        <a th:href="@{/learning(page=${page.number+1},size=${page.size})}">Далее</a>
+    </span>
+</div>
+<br/>
+<span th:unless="${page.hasNext()}">
+<form action="/learning/finish" method="post">
+    <input type="hidden" th:value="${page.getTotalElements}" th:attr="name='numberOfPages'">
+    <button type="submit" style="font-size: medium">Завершить изучение</button>
+</form>
+</span>
+<br/>
+<a th:href="@{/folder/{id}/vocabulary (id=${back})}">Вернуться к модулю</a>
+</body>
+</html>

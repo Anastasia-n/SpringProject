@@ -1,0 +1,15 @@
+h1 {
+    color: #78ab46;
+}
+
+body {
+    background-color: aquamarine;
+}
+
+.error-message {
+    color: rebeccapurple;
+}
+
+.error-message:first-letter {
+    text-transform: capitalize;
+}

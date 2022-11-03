@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавить новый модуль</title>
+</head>
+<body style="background-color: #E6E6FA ; margin-left: 90px; margin-top: 45px; font-size: large">
+<h1>Добавить новый модуль</h1>
+<br/>
+<form th:method="POST" th:action="@{/home/folder/new}" th:object="${folder}">
+    <label for="foldername">Введите название: </label>
+    <input type="text" th:field="*{nameFolder}" id="foldername" maxlength="45" required/>
+    <br/>
+    <br/>
+    <input type="submit" value="Сохранить" style="font-size: medium"/>
+</form>
+<br/>
+<form th:methog="GET" th:action="@{/home}">
+    <input type="submit" value="Отменить" style="font-size: medium"/>
+</form>
+</body>
+</html>
